@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>duogebiaozhu.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  
+  <body>
+   <input type="text" name="diyige" id="J_map_content"/>
+   <input type="text" name="dierge" id="J_map_content1"/>
+  </body>
+  <script type="text/javascript">
+//百度地图API功能
+function loadJScript() {
+　　var script = document.createElement("script");
+　　script.type = "text/javascript";
+　　script.src = "http://api.map.baidu.com/api?v=2.0&ak=ARry4V5u1FDH8MkHAN32QRDdCNL4S7Hd&callback=init";
+　　document.body.appendChild(script);
+}
+function init() {
+　　var sContent = document.getElementById('J_map_content').innerHTML;//【提示的html代码】
+　　var sContent1 = document.getElementById('J_map_content1').innerHTML;//【提示的html代码】
+
+　　// 百度地图API功能
+　　map = new BMap.Map("allmap");
+　　map.centerAndZoom(new BMap.Point(121.065592, 30.204504), 15);
+　　var data_info = [[122.066592, 30.204504,sContent],
+　　　　[122.060185, 30.208379,sContent1]
+　　];
+　　var opts = {
+　　　　//width : 250, // 信息窗口宽度
+　　　　//height: 80, // 信息窗口高度
+　　　　//title : "信息窗口" , // 信息窗口标题
+　　　　enableMessage:true//设置允许信息窗发送短息
+　　};
+　　for(var i=0;i<data_info.length;i++){
+　　　　var marker = new BMap.Marker(new BMap.Point(data_info[i][0],data_info[i][1])); // 创建标注
+　　　　var content = data_info[i][2];
+　　　　map.addOverlay(marker); // 将标注添加到地图中
+
+　　　　marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+　　　　addClickHandler(content,marker);
+　　}
+　　function addClickHandler(content,marker){
+
+　　　　marker.addEventListener("click",function(e){
+　　　　openInfo(content,e)}
+　　　　);
+　　}
+　　function openInfo(content,e){
+　　　　var p = e.target;
+　　　　var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+　　　　var infoWindow = new BMap.InfoWindow(content,opts); // 创建信息窗口对象
+　　　　infoWindow.show();
+　　　　map.openInfoWindow(infoWindow,point); //开启信息窗口
+
+　　}
+}
+window.onload = loadJScript; //异步加载地图
+</script>
+</html>
