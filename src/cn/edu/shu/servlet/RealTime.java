@@ -54,7 +54,7 @@ public class RealTime extends HttpServlet {
 				int hour = c.get(Calendar.HOUR_OF_DAY) ;
 				int minute = c.get(Calendar.MINUTE) ;
 				int second = c.get(Calendar.SECOND) ;
-				int millisecond= c.get(Calendar.MILLISECOND);
+				/*int millisecond= c.get(Calendar.MILLISECOND);*/
 		/**取得实时数据，判断故障，并写入数据库*/
 				DataAcqService das=new DataAcqService();
 				//得到指定id号最新的一条实时数据
@@ -72,7 +72,7 @@ public class RealTime extends HttpServlet {
 					out.println("<hour>"+hour+"</hour>") ;
 					out.println("<minute>"+minute+"</minute>") ;
 					out.println("<second>"+second+"</second>") ;
-					out.println("<millisecond>"+millisecond+"</millisecond>") ;
+					/*out.println("<millisecond>"+millisecond+"</millisecond>") ;*/
 					//将设备编号进行返回
 					out.println("<device>"+deviceID+"</device>");
 					String alertM=null ;
@@ -127,7 +127,7 @@ public class RealTime extends HttpServlet {
 								String shour = "" ;
 								String sminute = "" ;
 								String ssecond = "" ;
-								String smillisecond = "" ;
+								/*String smillisecond = "" ;*/
 								if(month < 10)
 							         smonth = "0"+month ;
 							     else
@@ -148,14 +148,14 @@ public class RealTime extends HttpServlet {
 							    	 ssecond = "0"+second ;
 							     else
 							    	 ssecond = ""+second ;
-							     if(millisecond <10)
+							     /*if(millisecond <10)
 							    	 smillisecond = "00"+millisecond ;
 							     else if(millisecond <100)
 							    	 smillisecond = "0"+millisecond ;
 							     else 
-							    	 smillisecond = ""+millisecond ;
+							    	 smillisecond = ""+millisecond ;*/
 							     
-							String datime = ""+year+smonth+sday+shour+sminute+ssecond+smillisecond ;
+							String datime = ""+year+smonth+sday+shour+sminute+ssecond/*+smillisecond*/ ;
 							   
 							int zlNo = array.getZlNo();
 							//System.out.println("准备插入报警信息："+alertM);

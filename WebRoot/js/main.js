@@ -83,7 +83,7 @@ var XMLHttpReq;
 	    var hour = XMLHttpReq.responseXML.getElementsByTagName("hour")[0].firstChild.nodeValue;
 	    var minute = XMLHttpReq.responseXML.getElementsByTagName("minute")[0].firstChild.nodeValue;
 	    var second = XMLHttpReq.responseXML.getElementsByTagName("second")[0].firstChild.nodeValue;
-	    var millisecond = XMLHttpReq.responseXML.getElementsByTagName("millisecond")[0].firstChild.nodeValue;
+	   /* var millisecond = XMLHttpReq.responseXML.getElementsByTagName("millisecond")[0].firstChild.nodeValue;*/
 	    
 	     var alert = XMLHttpReq.responseXML.getElementsByTagName("alert")[0].firstChild.nodeValue;
 	     var alertime = XMLHttpReq.responseXML.getElementsByTagName("alertime")[0].firstChild.nodeValue;
@@ -103,7 +103,7 @@ var XMLHttpReq;
 	     if(zl!=0){
 	    	
 	     document.getElementById("message").innerHTML = alertime.substring(0,4)+"/"+alertime.substring(4,6)+"/"+alertime.substring(6,8)+"/  "+alertime.substring(8,10)+":"
-	     +alertime.substring(10,12)+":"+alertime.substring(12,14)+":"+alertime.substring(14,17)+"   <"+zl+">支路报警——"+alert; 
+	     +alertime.substring(10,12)+":"+alertime.substring(12,14)+":"/*+alertime.substring(14,17)*/+"   <"+zl+">支路报警——"+alert; 
 	   /*   document.getElementById("message").innerHTML ="报警——断路故障"; */
 	     document.getElementById("message").style.background = "white" ;
 	     document.getElementById("message").style.color = "red" ;
