@@ -611,10 +611,10 @@ public class DataAcquisitionDao<T> implements IDataAcquisitionDao {
 	public void batchCurrentData() {
 		// TODO Auto-generated method stub
 		String sql1 = "INSERT INTO historydata(zl,voltage1,current1,current2,voltage2,addtime) SELECT zlNo,voltage1,current1,current2,voltage2,addtime FROM currentdata";
-		// String sql2="delete from currentdata";
+		 String sql2="delete from currentdata";
 		try {
 			qr.update(sql1);
-			// qr.update(sql2);
+			 qr.update(sql2);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
