@@ -36,8 +36,10 @@ public class DelUser extends HttpServlet{
 		int id = Integer.parseInt(req.getParameter("id"));
 		
 		IUserService userService = new UserServiceImpl();
-		
-		userService.deleteUser(id);
+		if(userService.getUserByID(id).getPriority()!="0"){
+			userService.deleteUser(id);
+		}
+	
 		resp.sendRedirect("./UserList.jsp");
 	}
 	
